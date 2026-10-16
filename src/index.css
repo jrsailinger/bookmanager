@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply m-0 bg-white text-zinc-800 antialiased dark:bg-zinc-950 dark:text-zinc-100;
+  }
+
+  /* 统一滚动条样式，保持 Notion 般的克制观感 */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-zinc-300 dark:bg-zinc-700;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-zinc-400 dark:bg-zinc-600;
+  }
+
+  /* 输入框自动填充时的背景色修正 */
+  input:-webkit-autofill {
+    -webkit-text-fill-color: inherit;
+  }
+}
+
+@layer components {
+  /* 全站统一输入控件基础样式 */
+  .wb-input {
+    @apply w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-800
+      outline-none transition placeholder:text-zinc-400
+      focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20
+      disabled:cursor-not-allowed disabled:opacity-60
+      dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder:text-zinc-500;
+  }
+
+  .wb-label {
+    @apply mb-1.5 block text-xs font-medium text-zinc-600 dark:text-zinc-400;
+  }
+
+  .wb-card {
+    @apply rounded-xl border border-zinc-200 bg-white shadow-card dark:border-zinc-800 dark:bg-zinc-900;
+  }
+}
