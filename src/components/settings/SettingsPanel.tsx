@@ -171,6 +171,10 @@ export function SettingsPanel({ total, withCoverCount, lastUpdated, onImport }: 
             <Info className="mt-0.5 h-3.5 w-3.5 shrink-0 text-zinc-400" />
             仅管理实体纸质藏书：不提供扫码 ISBN、不接入图书 API、不含借阅管理，全部字段手动录入
           </li>
+          <li className="flex gap-2">
+            <Upload className="mt-0.5 h-3.5 w-3.5 shrink-0 text-zinc-400" />
+            即使把本工具部署到网上（如 GitHub Pages），数据也仍然只存在当前设备的浏览器里；换设备或换浏览器需要「导出 JSON → 导入」才能同步
+          </li>
         </ul>
       </section>
     </div>
