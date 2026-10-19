@@ -148,7 +148,10 @@ npm run preview
 
 ## 七、部署到 GitHub Pages（随时随地联网打开）
 
-部署后访问地址为 `https://<你的用户名>.github.io/<仓库名>/`，手机、平板、任何联网电脑都能打开。
+部署后访问地址为：<https://jrsailinger.github.io/bookmanager/>
+
+> 🌏 **国内访问提醒**：`github.io` 在中国大陆经常出现打不开或极慢的情况——和你 `git push` 时断时续是同一个原因。
+> 打不开时的三个办法：挂代理 / 绑定自定义域名走 CDN / 再部署一份到国内可达的平台（见「国内访问优化」）。
 
 > ⚠️ **托管 ≠ 同步**：数据仍然只存在**每台设备的浏览器自己里面**，不会因为共用同一个网址而自动同步。
 > 在 A 设备录入的书，B 设备打开同一个网址看不到——需要用「导出 JSON → 导入」搬家。
@@ -188,6 +191,20 @@ git push origin gh-pages
 ```
 
 然后在仓库 **Settings → Pages** 里 Source 选 **Deploy from a branch**，分支选 `gh-pages`、目录选 `/docs` 或 `/root`（若 dist 内容在根目录则选 root；更省事的做法是把 dist 内容提交为 gh-pages 分支根目录）。
+
+### 国内访问优化
+
+`github.io` 在大陆访问不稳定时，任选其一（也可以同时部署多份做冗余）：
+
+| 方案 | 做法 | 国内可达性 |
+| --- | --- | --- |
+| 自定义域名 | Pages → Custom domain 填自己的域名，DNS 指到 GitHub | 一般，取决于运营商 |
+| Cloudflare Pages / Vercel | 连接同一个 GitHub 仓库，自动构建 | 较好 |
+| 腾讯云 EdgeOne Pages / OSS | 上传 `npm run build` 后的 `dist/` 或接 Gitee 仓库 | 最好 |
+| Gitee Pages | 推到已有的 Gitee 仓库，Pages 里点「更新」 | 好（需实名认证） |
+
+> 注意：**不同域名 = 不同的浏览器独立存储**，`a.com` 上录的书不会出现在 `b.com`，
+> 迁移仍然靠「导出 JSON → 导入」。多处部署只是为了防止某个平台打不开。
 
 ### 注意事项
 
